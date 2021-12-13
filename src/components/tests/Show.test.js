@@ -51,7 +51,16 @@ test('renders same number of options seasons are passed in', () => {
 });
 
 test('handleSelect is called when an season is selected', () => {
+    const handleSelect = jest.fn();
+    //Arrange
+    render(<Show show={showTest} selectedSeason={"none"} handleSelect={handleSelect}/>);
 
+    //Act
+    const select = screen.getByLabelText(/Select A Season/i);
+    userEvent.selectOptions(select, ['1']);
+
+    //Assert
+    expect(handleSelect).toBeCalled();
 });
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
