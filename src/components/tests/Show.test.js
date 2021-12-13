@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import {queryAllByTestId, render, screen} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Show from './../Show';
@@ -51,7 +51,9 @@ test('renders same number of options seasons are passed in', () => {
 });
 
 test('handleSelect is called when an season is selected', () => {
+    //Mock
     const handleSelect = jest.fn();
+
     //Arrange
     render(<Show show={testShow} selectedSeason={"none"} handleSelect={handleSelect}/>);
 
