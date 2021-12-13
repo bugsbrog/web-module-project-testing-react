@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import {queryAllByTestId, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Show from './../Show';
@@ -38,7 +38,15 @@ test('renders Loading component when prop show is null', () => {
     expect(loading).toBeInTheDocument();
 });
 
-test('renders same number of options seasons are passed in', () =>{
+test('renders same number of options seasons are passed in', () => {
+    //Arrange
+    render(<Show show={showTest} selectedSeason={"none"}/>);
+
+    //Act
+    const seasonOptions = screen.queryAllByTestId("season-option");
+
+    //Assert
+    expect(seasonOptions).toHaveLength(2)
 
 });
 
