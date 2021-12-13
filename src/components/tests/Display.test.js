@@ -42,7 +42,7 @@ test('renders Show component when the button is clicked ', async() => {
     const button = screen.getByRole('button');
     userEvent.click(button);
 
-    //await
+    //async/await
     const show = await screen.findByTestId('show-container');
 
     //Assert
@@ -75,13 +75,22 @@ test('renders show season options matching your data when the button is clicked'
     });
 });
 
-test('renders show season options matching your data when the button is clicked', () => {
+test('renders show season options matching your data when the button is clicked', async () => {
+    //Mock
+    mockFetchShow.mockResolvedValueOnce(testShow);
+    const displayFunc = jest.fn();
+
     //Arrange
-    render(<Display />)
+    render(<Display displayFunc={displayFunc}/>)
 
     //Act
+    const button = screen.getByRole('button');
+    userEvent.click(button);
 
+    //async/await
+    await waitFor(() => {
 
-    //Assert
-
+        //Assert
+        expect(displayFunc).toHaveBeenCalled();
+    });
 });
