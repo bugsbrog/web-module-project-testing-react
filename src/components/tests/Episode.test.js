@@ -19,7 +19,7 @@ const episodeTestNoImage = {
     name: "",
     season: 1,
     number: 1,
-    summary: "",
+    summary: "A love letter to the '80s classics that captivated a generation, Stranger Things is set in 1983 Indiana, where a young boy vanishes into thin air. As friends, family and local police search for answers, they are drawn into an extraordinary mystery involving top-secret government experiments, terrifying supernatural forces and one very strange little girl.",
     runtime: 1
 }
 
@@ -43,11 +43,11 @@ test("renders the summary test passed as prop", () => {
 
 test("renders default image when image is not defined", () => {
     //Arrange
-    // render(<Episode episode={episodeTestNoImage}/>)
-    //
-    // //Assert
-    // const image = screen.getByAltText('./stranger_things.png');
-    //
-    // //Assert
-    // expect(image).toBeTruthy();
+    render(<Episode episode={episodeTestNoImage}/>)
+
+    //Assert
+    const image = screen.queryByAltText('https://i.ibb.co/2FsfXqM/stranger-things.png');
+
+    //Assert
+    expect(image).toBeInTheDocument();
 });
