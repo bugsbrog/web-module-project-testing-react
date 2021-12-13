@@ -23,14 +23,29 @@ const showTest = {
 };
 
 test('renders without errors', () => {
+    //Arrange
     render(<Show show={showTest} selectedSeason={"none"}/>)
 });
 
-test('renders Loading component when prop show is null', () => {});
+test('renders Loading component when prop show is null', () => {
+    //Arrange
+    render(<Show show={null}/>)
 
+    //Act
+    const loading = screen.queryByTestId('loading-container');
 
-test('renders same number of options seasons are passed in', ()=>{});
+    //Assert
+    expect(loading).toBeInTheDocument();
+});
 
-test('handleSelect is called when an season is selected', () => {});
+test('renders same number of options seasons are passed in', () =>{
 
-test('component renders when no seasons are selected and when rerenders with a season passed in', () => {});
+});
+
+test('handleSelect is called when an season is selected', () => {
+
+});
+
+test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
+
+});
